@@ -1,37 +1,63 @@
-## Welcome to GitHub Pages
+> React学习路线
+## React主要概念
+- JSX
+  - JSX：神似HTML的JavaScript
+  - 有别于HTML的地方：
+  
+| HTML | JSX |
+| --- | --- |
+| class | className |
+| onclick | onClick |
+| label标签中的for属性 | htmlFor |
+| style="color: red" | style={{color: red}} |
+|  | 在JSX中可以写JS，用{}包裹起来即可，但是不能使用多行JS语句( 但是你可以使用三目或者逻辑运算符 ) |
 
-You can use the [editor on GitHub](https://github.com/ntscshen/react_learning_path/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+> 只要会写HTML，就会写JSX，它们之间的区别就上面这个几种
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+  JSX是React的特色之一：其他的框架或者在传统开发模式下，通常需要学习一门模板语言。来描述UI的一些变量或者函数等等。而JSX不是模板语言，其本身就是纯JavaScript。只是用我们熟悉的HTML来描述JavaScript。
 
-### Markdown
+  
+- 组件
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+> 组件是React的核心概念，React的基石，组件是构造软件的“零部件”
+> React可以理解为一个纯函数，输入什么，得到的就是什么
+> React是单向数据传递的，外面传递数据进入，一定是通过props的，外界要知道内部发生了什么变化，一定是内部暴露了一个事件
+> React组件分为两种：函数组件、类组件
 
-```markdown
-Syntax highlighted code block
+- props和state
+> React组件正是由props和state两种类型的数据驱动渲染出组件的UI
+> props是组件对外的接口，state是组件对内的接口
+> props是只读的，不能再组件内部修改props
+> state是可变的，组件状态变更通过调用this.setState({})方法来改变
+> 组件state必须能代表一个UI呈现的完整状态，即组件的任何UI改变都可以从state的变化中反应出来，
+> state中所有状态都应该用于反映组件UI的变化，不应该存在通过其他状态计算而来的中间状态
+> 例如：发送一个Ajax请求，在数据回来之前你应该在页面使用Loading，没有必要为Loading单独添加一个状态进行管理，可以根据其他的状态数据得到
+> 1. 能计算得到的状态就去计算它，就不要在state中单独存储
+> 2. 组件经量无状态，所需数据通过props传递( 纯组件 )
+>   
+> 
+- 有状态组件和无状态组件
+> 无状态组件：不是每个组件都需要定义state，如果一个组件的内部状态是不变的，就用不到state，这样的组件称之为无状态组件
+> 有状态组件：一个组价内部状态会发生变化，就需要使用state来存储变化，这样的组件称之为有状态组件
+> 原则：应该尽可能多的使用无状态组件，并且在使用无状态组件时，应该尽可能多的将其定义为函数组件( 简洁的多 )，无状态组件不用关心状态的具体变化，只聚焦于UI的展示，更容易被复用。
+> React的组件设计思路：通过定义少量的有状态组件管理整个应用的变化，并且将状态通过props传递給其余的无状态组件，由无状态组件完成页面绝大多数的UI渲染工作。
+> 有状态组件：聚焦于处理状态变化的业务逻辑
+> 无状态组件：聚焦于组件的UI渲染
 
-# Header 1
-## Header 2
-### Header 3
+> 当在设计组件时发现一个功能有太多的代码时，就要考虑进行组件拆分，用多个小组件来代替，每个小组件聚焦于单个功能的实现( 零部件 )，最后进行组装，满足复杂业务需求
+> 组件如何拆分：拆分组件最关键的是确定组件的 "边界"，每个组件都应该是可以独立存在的，如果两个组件逻辑太紧密，无法清晰定义各自的职责，那么也许这两个组件本身就不应该被拆分，作为同一个组件也许更为合理。
 
-- Bulleted
-- List
+- 事件监听
+- 受控和非受控组件
 
-1. Numbered
-2. List
+## React案例
+- 基础版todolist
+- Redux版todolist
+- 基础项目实战
 
-**Bold** and _Italic_ and `Code` text
+### React核心
+1. JSX - Virtual DOM - DOM diffing
+2. 组件
+3. Redux( 单向数据流 )
+4. 路由
 
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/ntscshen/react_learning_path/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
