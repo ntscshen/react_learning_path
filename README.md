@@ -176,23 +176,3 @@ handleChange = event => {
 ####### **非受控组件**
 1. 受控组件保证了表单的状态有React统一管理，但它需要onChange事件处理，然后把表单元素同步到state。这一过程比较繁琐。另一种替代方案是是用费受控组件：表单元素依然由表单元素自己管理，而不是交给React组件管理，使用ref获取DOM元素，通过defaultValue设置input\slect\textarta元素的默认值，checkbox和radio通过defaultChecked设置默认值
 2. 虽然说非受控组件简化了表单操作的过程，但是这种方式破坏了React对组件的统一管理的一致性，会出现不已排查的Bug，一次非特殊清下，不推荐使用
-
-
-#### React生命周期
-
-## React 案例
-
-- 基础版 todolist
-- Redux 版 todolist
-- 基础项目实战
-
-倒计时
-加减
-todo
-
-### React 核心
-
-1.  JSX - Virtual DOM - DOM diffing
-2.  setState 的异步
-3.  Redux( 单向数据流 )
-4.  路由
