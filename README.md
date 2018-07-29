@@ -38,7 +38,7 @@ JSX 是 React 的特色之一：其他的框架或者在传统开发模式下，
 
 > 例如：发送一个 Ajax 请求，在数据回来之前你应该在页面使用 Loading，没有必要为 Loading 单独添加一个状态进行管理，可以根据其他的状态数据得到
 
-####### **props**
+##### **props**
 
 - React 组件的 props：除了支持字符串类型，可以是任何一种 JavaScript 语言支持的数据类型
 - 组件绝对不要去修改传入的 props 值，严格来说，React 并没有办法阻止你去修改传入的 props 对象，这是一条红线，不然可能会遇到不可预料的 Bug
@@ -46,7 +46,7 @@ JSX 是 React 的特色之一：其他的框架或者在传统开发模式下，
 - 如果组件需要定义自己的构造函数，一定要在构造函数第一行通过 super 调用父类的 React.Component 的构造函数，如果在构造函数中没有调用 super(props)，那么组件实例被构造之后，所有成员的函数都无法通过 this.props 访问到父组件传递过来的 props 值
 - propTypes 类型检查：一个辅助开发的功能，并不会改变组件的行为，产生的错误信息只有开发者才能看得懂。只用在开发环境，最终部署到生产环境，用 babel-react-optimize 自动去掉 propType 即可
 
-####### **设计一个合适的 state**
+##### **设计一个合适的 state**
 
 - 组件中用到的变量是不是应该作为 state 属性：
 
@@ -55,7 +55,7 @@ JSX 是 React 的特色之一：其他的框架或者在传统开发模式下，
 3.  这个变量是否在组件的整个生命周期中都保持不变？如果是，那么它不应该写在 state 中，更为合适的是普通属性
 4.  如果是通过 props 获取的，那么就不是一个 state，请用 this.props 获取
 
-####### **state 不可变对象**
+##### **state 不可变对象**
 
 1.  React 官方建议把 state 当做不可变对象，当 state 中的某个状态发生改变时，应该重新创建这个状态对象。而不是直接修改原来的状态
 2.  如果是数字、字符串、布尔，直接給要修改的状态赋值即可
@@ -92,7 +92,7 @@ this.setState(preState => {
 2.  对象形式( 处理事件的响应函数以对象形式赋值给事件 )
 3.  在 React 事件中，必须显示的调用 `event.preventDefault` 来阻止事件默认行为
 
-####### **事件处理中的 this 绑定**
+##### **事件处理中的 this 绑定**
 
 > React 组件的事件处理最容易出错的地方在与 this 的执行
 
@@ -136,9 +136,9 @@ handleClick = event => {
 
 > 对于不同的表单元素，React的控制方式略有不同
 
-####### **文本框**
+##### **文本框**
 1. 通过value设置input显示内容 -> 通过onChange监听value值变化 -> 触发事件 -> 去setState
-####### **下拉列表**
+##### **下拉列表**
 1. 元素select列表中，可以通过定义option的selected属性来确定哪一个处于选中状态，在React中，只需要在select上定义value属性就可以决定哪一个option处于选中状态。 - 只需要修改select的value值即可，不需要关注option
 ```javascript
 state = {
@@ -153,7 +153,7 @@ handlChange = event => {
   <option value="mobx">mobx</option>
 </selet>
 ```
-####### **复选框和单选框**
+##### **复选框和单选框**
 > 通常checkbox和radio的值是不变的，需要改变的是它们的checked状态，因此React控制的属性不在是value属性，而是checked属性
 ```javascript
 state = {
@@ -173,6 +173,6 @@ handleChange = event => {
 />
 ```
 
-####### **非受控组件**
+##### **非受控组件**
 1. 受控组件保证了表单的状态有React统一管理，但它需要onChange事件处理，然后把表单元素同步到state。这一过程比较繁琐。另一种替代方案是是用费受控组件：表单元素依然由表单元素自己管理，而不是交给React组件管理，使用ref获取DOM元素，通过defaultValue设置input\slect\textarta元素的默认值，checkbox和radio通过defaultChecked设置默认值
 2. 虽然说非受控组件简化了表单操作的过程，但是这种方式破坏了React对组件的统一管理的一致性，会出现不已排查的Bug，一次非特殊清下，不推荐使用
